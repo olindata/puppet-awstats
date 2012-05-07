@@ -1,9 +1,9 @@
 define awstats::awstats_vhost($ensure = present, $docroot, $outputdir, $user,
-  $group, $domain, $aliases) {
+  $group, $domain, $aliases, $apache_package_name = 'apache') {
   file { "/etc/awstats/awstats.${name}.conf":
     ensure  => $ensure,
     require => [
-      Package[apache],
+      Package[$apache_package_name],
       File[$docroot],
       User[$name]
     ],
