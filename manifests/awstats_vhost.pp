@@ -1,5 +1,5 @@
 define awstats::awstats_vhost($ensure = present, $docroot, $outputdir, $user,
-  $group, $domain, $aliases, $apache_package_name = 'apache') {
+  $group, $domain, $aliases, $apache_package_name = 'apache', $conf_template = 'awstats/awstats.conf.erb') {
   file { "/etc/awstats/awstats.${name}.conf":
     ensure  => $ensure,
     require => [
@@ -10,7 +10,7 @@ define awstats::awstats_vhost($ensure = present, $docroot, $outputdir, $user,
     mode    => 0644,
     owner   => $user,
     group   => $group,
-    content => template('awstats/awstats.conf.erb'),
+    content => template($conf_template),
   }
 
 
