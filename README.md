@@ -8,10 +8,14 @@ This project implements rudimentary support for an awstats module for puppet. It
 Usage
 -----
 
-`# This will install and configure awstats package
-include awstats`
 
-`# This will configure an awstats file for a specific vhost
+```
+# This will install and configure awstats package
+include awstats
+```
+
+```
+# This will configure an awstats file for a specific vhost
 awstats::awstats_vhost{ 'example.com':
   ensure    => present,
   docroot   => '/var/www/example.com',
@@ -20,4 +24,5 @@ awstats::awstats_vhost{ 'example.com':
   group     => 'www-data',
   domain    => 'example.com',
   aliases   => '*.example.com',
-}`
+}
+```
